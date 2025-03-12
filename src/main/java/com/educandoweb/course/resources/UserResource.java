@@ -36,6 +36,12 @@ public class UserResource {
         return ResponseEntity.created(uri).body(user);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<User> delete(@PathVariable Long id) {
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
